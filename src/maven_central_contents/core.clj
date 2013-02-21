@@ -21,3 +21,9 @@
         (((json/parse-string body) "response") "docs")
         (println "Bad HTTP status of" status)))))
 
+(defn walk-levels
+  ""
+  ([] (walk-levels 47))
+  ([start]
+     (let [next-level (get-one-level start)]
+       (map #(get-one-level (% "id")) next-level))))
